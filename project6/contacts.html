@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Pure Ayurveda</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* BASIC VARIABLES AND STYLES */
+        :root {
+            --accent-color: #f3a2a2;
+            --primary-btn-bg: rgb(226, 135, 96);
+            --primary-btn-hover-bg: rgb(209, 107, 63);
+            --white: #ffffff;
+            --text-dark: #333;
+            --border-color: #eee;
+            --bg-color: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .page-banner-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 150px 0;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .page-banner-section .breadcrumb-item a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .page-banner-section .breadcrumb-item.active {
+            color: var(--accent-color);
+        }
+
+        .page-banner-section .breadcrumb {
+            padding-top: 10px; /* Adjusted padding */
+        }
+
+        /* ==================================
+           CONTACT PAGE STYLES
+           ================================== */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #fff; /* Added a background color */
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: 100%;
+        }
+
+        .map-container iframe {
+            display: block; /* Removes bottom space */
+        }
+        
+        .contact-form-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .contact-form-container .form-control {
+            background-color: #f7f7f7;
+            border: 1px solid #e7e7e7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-form-container .form-control:focus {
+            background-color: #fff;
+            box-shadow: 0 0 0 0.25rem rgba(226, 135, 96, 0.25);
+            border-color: var(--primary-btn-bg);
+        }
+
+        /* === BUTTON HOVER EFFECT (FROM PREVIOUS REQUEST) === */
+        .btn-primary-custom {
+            background-color: var(--primary-btn-bg);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative; 
+            overflow: hidden;   
+            z-index: 1;  
+            transition: color 0.4s ease-in-out;       
+        }
+
+        .btn-primary-custom::before {
+            content: ''; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--primary-btn-hover-bg);
+            width: 0;
+            height: 100%;
+            z-index: -1;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .btn-primary-custom:hover::before {
+            width: 100%;
+        }
+
+
+        /* FADE-IN ANIMATION ON SCROLL */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================================
+           FOOTER STYLES
+           ================================== */
+        .footer-section {
+    background-color: black;
+    color: #a9a9a9;
+    position: relative;
+}
+.subscribe-bar {
+    background: var(--bg-color);
+    padding: 40px 0;
+    color: var(--text-dark);
+    transform: translateY(-50%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    margin: 0 auto;
+}
+.subscribe-form {
+    display: flex;
+}
+.subscribe-form .form-control {
+    border-radius: 50px 0 0 50px;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+}
+.subscribe-form .btn {
+    border-radius: 0 50px 50px 0;
+}
+
+.main-footer {
+    padding: 80px 0 40px;
+}
+.footer-section h5 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #a9a9a9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+.footer-contact li {
+    display: flex;
+    margin-bottom: 15px;
+}
+.footer-contact i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    width: 20px;
+}
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    background: var(--accent-color);
+}
+.recent-blog-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.recent-blog-list img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.recent-blog-list p {
+    margin: 0;
+    line-height: 1.3;
+}
+.recent-blog-list span {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.footer-herbs-left, .footer-herbs-right {
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.5;
+}
+.footer-herbs-left { left: 0; width: 200px; }
+.footer-herbs-right { right: 0; width: 200px; }
+
+.copyright-bar {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =======================
+   13. Responsive Styles
+   ======================= */
+@media (max-width: 991.98px) {
+    .hero-text h1 { font-size: 2.8rem; }
+    .hero-section { text-align: center; }
+    .hero-image-container { border-radius: 25px; margin-top: 40px; }
+    .hero-image-container .carousel-item img { border-radius: 25px; }
+    .decorative-leaf { display: none; }
+    .subscribe-bar { transform: translateY(0); width: 100%; border-radius: 0; }
+    .main-footer { padding-top: 40px; }
+    .experience-badge { left: 0; }
+    .experience-thumb { right: 0; }
+}
+
+@media (max-width: 767.98px) {
+    .section-title { font-size: 2rem; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .experience-badge { position: static; margin-bottom: 15px; }
+    .experience-thumb { display: none; }
+    .subscribe-bar h3 { text-align: center; margin-bottom: 20px; }
+    .subscribe-form { justify-content: center; }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header remains the same -->
+    <header class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="Logo.png" class="logo">Pure Ayurveda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                 <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Banner -->
+        <section class="page-banner-section" style="background-image: url('bredcrumb-bg.jpg');">
+            <div class="banner-overlay">
+                <div class="container text-center">
+                    <h1 class="text-white display-4 fw-bold">Contact Us</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="file:///D:/hamza/bootstrap/project6/index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="row g-5 align-items-stretch">
+                    <!-- Left Column: Map -->
+                    <div class="col-lg-6 fade-in-element">
+                        <div class="map-container">
+                            <!-- CORRECTED GOOGLE MAPS IFRAME -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178751390497!2d55.27134381500949!3d25.19719698389617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xfe4662489f688e1e!2sBurj%20Khalifa!5e0!3m2!1sen!2sae!4v1654512411332!5m2!1sen!2sae" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <!-- Right Column: Form -->
+                    <div class="col-lg-6 fade-in-element">
+                        <div class="contact-form-container">
+                            <h2 class="section-title mb-3">Get In Touch With Us</h2>
+                            <p class="text-muted mb-4">Feel free to reach out to us. We are happy to help you with any questions or queries.</p>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="First Name *" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Your Email *" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Subject">
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5" placeholder="Your Message..."></textarea>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button type="submit" class="btn btn-primary-custom">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer Section -->
+    <footer class="footer-section" >
+        <div class="subscribe-bar" style="background-color: rgb(0, 0, 0);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Sign Up To Get Updates & News About Us..</h3>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="subscribe-form">
+                            <input type="email" class="form-control" placeholder="Enter Your Email...">
+                            <button type="submit" class="btn btn-primary-custom" style="background-color: #f3a2a2;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer">
+            <div class="container">
+                 <img src="footer-left - Copy.png" class="footer-herbs-left">
+                 <img src="footer-right - Copy.png" class="footer-herbs-right">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <a class="navbar-brand text-white" href="#">
+                           <img src="Logo.png" class="logo"> Pure Ayurveda
+                        </a>
+                        <p class="mt-3">Amet minim mollit non deserunt ullamco est sit Velit officia consequat duis enim velit occaecat.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Useful Links</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">Shipping Options</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Shopping FAQs</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Contact Info</h5>
+                        <ul class="list-unstyled footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> 4517 Washington Ave. Manchester, Kentucky 39495</li>
+                            <li><i class="fas fa-phone-alt"></i> (208) 555-0112</li>
+                            <li><i class="fas fa-envelope"></i> example@gmail.com</li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Recent Blog</h5>
+                        <ul class="list-unstyled recent-blog-list">
+                            <li>
+                                <img src="footer-blog1 - Copy - Copy.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                             <li>
+                                <img src="footer-blog2.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar text-center">
+             Copyright © 2024. All Right Reserved. Pure Ayurveda
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- SAHI TARIKE SE ALAG KIYA HUA JAVASCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // FADE-IN ANIMATION FOR ELEMENTS ON SCROLL
+        const fadeElements = document.querySelectorAll('.fade-in-element');
+
+        const observerOptions = {
+            root: null, // observes intersections relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // If the element is in viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing the element once it has become visible
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Attach the observer to each of the elements with the 'fade-in-element' class
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+    });
+    </script>
+
+</body>
+</html>

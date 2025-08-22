@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Pure Ayurveda</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Link to your existing style.css -->
+</head>
+<style>
+    /* ==================================
+   ADDITIONAL STYLES FOR SHOP PAGE
+   (Add this to the bottom of style.css)
+   ================================== */
+
+.shop-content-section {
+    padding: 80px 0;
+}
+
+.sidebar-widget {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.widget-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Search Form */
+.search-form .form-control {
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+.search-form .btn {
+    border-radius: 0 5px 5px 0;
+}
+
+/* Category List */
+.category-list li {
+    margin-bottom: 15px;
+}
+.category-list a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+.category-list a:hover {
+    color: var(--accent-color);
+}
+.category-list a i {
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+
+/* Featured Products */
+.featured-product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.featured-product-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+.featured-product-item h6 {
+    margin: 0;
+}
+.featured-product-item h6 a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-family: var(--primary-font);
+}
+.featured-product-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--text-light);
+}
+
+/* Tag Cloud */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tag-cloud a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    color: var(--text-light);
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.tag-cloud a:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+/* Responsive sidebar ordering */
+@media (max-width: 991.98px) {
+    .order-lg-1 { order: 2; }
+    .order-lg-2 { order: 1; margin-bottom: 40px;}
+}
+.footer-section {
+    background-color: black;
+    color: #a9a9a9;
+    position: relative;
+}
+.subscribe-bar {
+    background: var(--bg-color);
+    padding: 40px 0;
+    color: var(--text-dark);
+    transform: translateY(-50%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    margin: 0 auto;
+}
+.subscribe-form {
+    display: flex;
+}
+.subscribe-form .form-control {
+    border-radius: 50px 0 0 50px;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+}
+.subscribe-form .btn {
+    border-radius: 0 50px 50px 0;
+}
+
+.main-footer {
+    padding: 80px 0 40px;
+}
+.footer-section h5 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #a9a9a9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+.footer-contact li {
+    display: flex;
+    margin-bottom: 15px;
+}
+.footer-contact i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    width: 20px;
+}
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    background: var(--accent-color);
+}
+.recent-blog-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.recent-blog-list img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.recent-blog-list p {
+    margin: 0;
+    line-height: 1.3;
+}
+.recent-blog-list span {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.footer-herbs-left, .footer-herbs-right {
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.5;
+}
+.footer-herbs-left { left: 0; width: 200px; }
+.footer-herbs-right { right: 0; width: 200px; }
+
+.copyright-bar {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =======================
+   13. Responsive Styles
+   ======================= */
+@media (max-width: 991.98px) {
+    .hero-text h1 { font-size: 2.8rem; }
+    .hero-section { text-align: center; }
+    .hero-image-container { border-radius: 25px; margin-top: 40px; }
+    .hero-image-container .carousel-item img { border-radius: 25px; }
+    .decorative-leaf { display: none; }
+    .subscribe-bar { transform: translateY(0); width: 100%; border-radius: 0; }
+    .main-footer { padding-top: 40px; }
+    .experience-badge { left: 0; }
+    .experience-thumb { right: 0; }
+}
+
+@media (max-width: 767.98px) {
+    .section-title { font-size: 2rem; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .experience-badge { position: static; margin-bottom: 15px; }
+    .experience-thumb { display: none; }
+    .subscribe-bar h3 { text-align: center; margin-bottom: 20px; }
+    .subscribe-form { justify-content: center; }
+}
+</style>
+<body>
+
+    <!-- ======================= Header (Reused & Modified) ======================= -->
+    <header class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: white;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo.png" class="logo"> Pure Ayurveda
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="file:///D:/hamza/bootstrap/project6/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/blog.html#">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pages
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="file:///D:/hamza/bootstrap/project6/checkout.html">checkout</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/contact.html">Contact</a></li>
+                </ul>
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/wreist.html"><i class="fas fa-heart"></i></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="file:///D:/hamza/bootstrap/project6/addcart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger rounded-pill cart-badge">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/protfolio.html#"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================= Page Title Banner (Reused & Modified) ======================= -->
+        <section class="page-banner-section" style="background-image: url('bredcrumb-bg.jpg');padding-top: 200px; padding-bottom: 200px;">
+            <div class="banner-overlay">
+                <div class="container text-center">
+                    <h1 class="text-white">Shop</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Main Shop Content Area (New) ======================= -->
+        <section class="shop-content-section">
+            <div class="container">
+                <div class="row">
+                    <!-- Left Sidebar -->
+                    <div class="col-lg-4 order-lg-1 order-2">
+                        <aside class="sidebar">
+                            <!-- Search Widget -->
+                            <div class="sidebar-widget">
+                                <form class="search-form d-flex">
+                                    <input type="text" class="form-control" placeholder="Search Here...">
+                                    <button type="submit" class="btn btn-primary-custom">Search</button>
+                                </form>
+                            </div>
+
+                            <!-- Categories Widget -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Categories</h5>
+                                <ul class="list-unstyled category-list">
+                                    <li><a href="#"><i class="fas fa-arrow-right"></i> Top Products</a></li>
+                                    <li><a href="#"><i class="fas fa-arrow-right"></i> Latest Products</a></li>
+                                    <li><a href="#"><i class="fas fa-arrow-right"></i> New Trending</a></li>
+                                    <li><a href="#"><i class="fas fa-arrow-right"></i> New Arrivals</a></li>
+                                    <li><a href="#"><i class="fas fa-arrow-right"></i> Recently Added</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Featured Products Widget -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Featured Products</h5>
+                                <ul class="list-unstyled">
+                                    <li class="featured-product-item">
+                                        <a href="#"><img src="product-img1.png"></a>
+                                        <div>
+                                            <h6><a href="#">Black Organic Tea</a></h6>
+                                            <p>Ut enim ad minim veniam quis nostrud exerci</p>
+                                        </div>
+                                    </li>
+                                    <li class="featured-product-item">
+                                        <a href="#"><img src="product-img2.png"></a>
+                                        <div>
+                                            <h6><a href="#">Loose Leaf Tea</a></h6>
+                                            <p>Ut enim ad minim veniam quis nostrud exerci</p>
+                                        </div>
+                                    </li>
+                                    <li class="featured-product-item">
+                                        <a href="#"><img src="product-img3.png"></a>
+                                        <div>
+                                            <h6><a href="#">Oolong Tea</a></h6>
+                                            <p>Ut enim ad minim veniam quis nostrud exerci</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                             <!-- Tag Cloud Widget -->
+                            <div class="sidebar-widget">
+                                <h5 class="widget-title">Tag Clouds</h5>
+                                <div class="tag-cloud">
+                                    <a href="#">Products</a>
+                                    <a href="#">Ayurveda</a>
+                                    <a href="#">Pure</a>
+                                    <a href="#">Trending</a>
+                                    <a href="#">Herbal</a>
+                                    <a href="#">Healthy</a>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <!-- Right Product Grid -->
+                    <div class="col-lg-8 order-lg-2 order-1">
+                        <div class="row">
+                            <!-- Product Card 1 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <span class="badge bg-sale">Sale</span>
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img1.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Black Organic Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card 2 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <span class="badge bg-discount">30% Off</span>
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img2.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Loose Leaf Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Product Card 3 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img3.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Oolong Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card 4 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img4.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Black Organic Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card 5 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img5.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Green Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product Card 6 -->
+                            <div class="col-md-6 col-xl-4 mb-4">
+                                <div class="product-card">
+                                    <span class="badge bg-success text-white">Trending</span>
+                                    <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                                    <img src="product-img6.png" class="product-image">
+                                    <div class="product-info">
+                                        <h5>Sencha Tea</h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                            <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                        </div>
+                                        <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Load More Button -->
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-primary-custom">Load More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Trending Product Section (Reused) ======================= -->
+        <section class="product-section text-center" style="padding-bottom: 100px;">
+            <div class="container">
+                <p class="section-subtitle">Product</p>
+                <h2 class="section-title">Trending Product</h2>
+                <div class="row">
+                    <!-- Cards will be the same as homepage, so this is just a placeholder -->
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <span class="badge bg-sale">Sale</span>
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro1.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                </div>
+                                <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                             <span class="badge bg-discount">30% Off</span>
+                             <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro2.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                </div>
+                                <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                             <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro3.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                </div>
+                                <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                             <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro4.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating"><i class="fas fa-star"></i> 4.5/5</div>
+                                </div>
+                                <a href="#" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= Footer (Reused) ======================= -->
+    <footer class="footer-section" >
+        <div class="subscribe-bar" style="background-color: rgb(0, 0, 0);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Sign Up To Get Updates & News About Us..</h3>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="subscribe-form">
+                            <input type="email" class="form-control" placeholder="Enter Your Email...">
+                            <button type="submit" class="btn btn-primary-custom" style="background-color: #f3a2a2;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer">
+            <div class="container">
+                 <img src="footer-left - Copy.png" class="footer-herbs-left">
+                 <img src="footer-right - Copy.png" class="footer-herbs-right">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <a class="navbar-brand text-white" href="#">
+                           <img src="Logo.png" class="logo"> Pure Ayurveda
+                        </a>
+                        <p class="mt-3">Amet minim mollit non deserunt ullamco est sit Velit officia consequat duis enim velit occaecat.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Useful Links</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">Shipping Options</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Shopping FAQs</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Contact Info</h5>
+                        <ul class="list-unstyled footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> 4517 Washington Ave. Manchester, Kentucky 39495</li>
+                            <li><i class="fas fa-phone-alt"></i> (208) 555-0112</li>
+                            <li><i class="fas fa-envelope"></i> example@gmail.com</li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Recent Blog</h5>
+                        <ul class="list-unstyled recent-blog-list">
+                            <li>
+                                <img src="footer-blog1 - Copy - Copy.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                             <li>
+                                <img src="footer-blog2.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar text-center">
+             Copyright © 2024. All Right Reserved. Pure Ayurveda
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Link to your existing script.js -->
+    <script src="script.js"></script>
+
+</body>
+</html>

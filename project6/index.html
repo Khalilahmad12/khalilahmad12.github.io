@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Ayurveda - Herbal Products</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+</head>
+<style>
+    /* =======================
+   1. General & Root Styles
+   ======================= */
+:root {
+    --bg-color: #fcf9f3;
+    --accent-color: #d1a191;
+    --text-dark: #2c2623;
+    --text-light: #555555;
+    --footer-bg: #2c2623;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --primary-font: 'Poppins', sans-serif;
+    --heading-font: 'Playfair Display', serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--primary-font);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-subtitle {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.btn-primary-custom {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+    background-color: #c08f7e;
+    border-color: #c08f7e;
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.btn-outline-custom {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+/* =======================
+   2. Header / Navbar
+   ======================= */
+.navbar {
+    background-color: var(--bg-color);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand .logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    margin: 0 10px;
+}
+.nav-link.active, .nav-link:hover {
+    color: var(--accent-color);
+}
+.navbar-nav .nav-link i {
+    font-size: 1.2rem;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 0.6em;
+}
+
+/* =======================
+   3. Hero Section
+   ======================= */
+.hero-section {
+    padding-top: 150px;
+    min-height: 80vh;
+}
+.hero-text h1 {
+    font-size: 3.8rem;
+    line-height: 1.2;
+}
+.hero-text h1 span {
+    color: var(--accent-color);
+}
+.hero-text p {
+    font-size: 1.1rem;
+    margin: 20px 0 30px;
+}
+
+.hero-image-container {
+    background-color: var(--accent-color);
+    border-radius: 25rem 0 0 25rem;
+    padding: 3rem;
+    position: relative;
+}
+.hero-image-container .carousel-item img {
+    border-radius: 25rem 0 0 25rem;
+}
+.carousel-control-prev, .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel-control-prev { left: 1rem; }
+.carousel-control-next { right: 1rem; }
+
+/* Decorative leaves */
+.decorative-leaf {
+    position: absolute;
+    z-index: -1;
+}
+.hero-leaf-1 {
+    top: 100px;
+    left: 2%;
+    width: 200px;
+}
+.hero-leaf-2 {
+    top: 250px;
+    right: 48%;
+    width: 100px;
+}
+
+/* =======================
+   4. Categories Section
+   ======================= */
+.categories-section {
+    padding-bottom: 60px;
+}
+.category-carousel {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.category-item {
+    text-align: center;
+    margin: 15px;
+}
+.category-item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.category-item img:hover {
+    transform: scale(1.05);
+}
+.category-item p {
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* =======================
+   5. Product Card
+   ======================= */
+.product-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.product-card .badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+.badge.bg-sale { background-color: #DAA520; }
+.badge.bg-discount { background-color: #ADD8E6; color: var(--text-dark);}
+
+.wishlist-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+.wishlist-icon:hover { color: var(--accent-color); }
+
+.product-image {
+    display: block;
+    margin: 20px auto;
+    height: 150px;
+}
+.product-image-large {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.product-info h5 {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+.product-price del {
+    color: var(--text-light);
+    font-weight: 400;
+    margin-right: 5px;
+}
+.product-rating {
+    font-size: 0.9rem;
+}
+.product-rating .fa-star {
+    color: #ffc107;
+}
+
+/* =======================
+   6. Who We Are Section
+   ======================= */
+.experience-image-container {
+    position: relative;
+}
+.experience-badge {
+    position: absolute;
+    bottom: 20px;
+    left: -30px;
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.experience-badge h2 {
+    color: var(--white);
+    font-size: 3rem;
+    margin: 0;
+}
+.experience-badge p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+.experience-thumb {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    border-radius: 10px;
+    border: 5px solid var(--bg-color);
+}
+
+/* =======================
+   7. Achievements Section
+   ======================= */
+.achievements-section { background-color: var(--white); }
+.achievement-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+.achievement-card .icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: #fceee9;
+    color: var(--accent-color);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    margin-right: 20px;
+}
+.achievement-card .text-box h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+.achievement-card .text-box p {
+    margin: 0;
+}
+
+/* =======================
+   8. Why Ayurveda Section
+   ======================= */
+.why-card {
+    text-align: center;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+.why-card .icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background-color: #fceee9;
+    color: var(--accent-color);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+}
+.why-card h5 {
+    font-size: 1.2rem;
+}
+.why-list li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+.why-list i {
+    color: var(--accent-color);
+    margin-right: 10px;
+}
+.video-container {
+    position: relative;
+}
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--accent-color);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+.play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    color: var(--text-dark);
+}
+
+/* =======================
+   9. Testimonials Section
+   ======================= */
+.testimonial-section {
+    background: linear-gradient(rgba(252, 249, 243, 0.9), rgba(252, 249, 243, 0.9)), url('https://i.ibb.co/L938wcn/bg-pattern.png');
+    background-size: cover;
+}
+.testimonial-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.quote-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 4rem;
+    color: #f0f0f0;
+    z-index: 1;
+}
+.testimonial-card p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+.client-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.client-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.client-info h6 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+#testimonialCarousel .carousel-control-prev-icon,
+#testimonialCarousel .carousel-control-next-icon {
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    padding: 15px;
+    background-size: 50%;
+}
+
+/* =======================
+   10. Team Section
+   ======================= */
+.team-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.team-card img {
+    width: 100%;
+}
+.team-info {
+    padding: 20px;
+}
+.team-info h5 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.team-info p {
+    margin: 0;
+}
+
+/* =======================
+   11. Blog Section
+   ======================= */
+.blog-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+.blog-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.blog-content {
+    padding: 20px;
+}
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+.blog-meta span:first-child {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+.blog-content h5 {
+    font-size: 1.2rem;
+}
+
+/* =======================
+   12. Footer
+   ======================= */
+.footer-section {
+    background-color: black;
+    color: #a9a9a9;
+    position: relative;
+}
+.subscribe-bar {
+    background: var(--bg-color);
+    padding: 40px 0;
+    color: var(--text-dark);
+    transform: translateY(-50%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    margin: 0 auto;
+}
+.subscribe-form {
+    display: flex;
+}
+.subscribe-form .form-control {
+    border-radius: 50px 0 0 50px;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+}
+.subscribe-form .btn {
+    border-radius: 0 50px 50px 0;
+}
+
+.main-footer {
+    padding: 80px 0 40px;
+}
+.footer-section h5 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #a9a9a9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+.footer-contact li {
+    display: flex;
+    margin-bottom: 15px;
+}
+.footer-contact i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    width: 20px;
+}
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    background: var(--accent-color);
+}
+.recent-blog-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.recent-blog-list img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.recent-blog-list p {
+    margin: 0;
+    line-height: 1.3;
+}
+.recent-blog-list span {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.footer-herbs-left, .footer-herbs-right {
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.5;
+}
+.footer-herbs-left { left: 0; width: 200px; }
+.footer-herbs-right { right: 0; width: 200px; }
+
+.copyright-bar {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* =======================
+   13. Responsive Styles
+   ======================= */
+@media (max-width: 991.98px) {
+    .hero-text h1 { font-size: 2.8rem; }
+    .hero-section { text-align: center; }
+    .hero-image-container { border-radius: 25px; margin-top: 40px; }
+    .hero-image-container .carousel-item img { border-radius: 25px; }
+    .decorative-leaf { display: none; }
+    .subscribe-bar { transform: translateY(0); width: 100%; border-radius: 0; }
+    .main-footer { padding-top: 40px; }
+    .experience-badge { left: 0; }
+    .experience-thumb { right: 0; }
+}
+
+@media (max-width: 767.98px) {
+    .section-title { font-size: 2rem; }
+    .hero-text h1 { font-size: 2.2rem; }
+    .experience-badge { position: static; margin-bottom: 15px; }
+    .experience-thumb { display: none; }
+    .subscribe-bar h3 { text-align: center; margin-bottom: 20px; }
+    .subscribe-form { justify-content: center; }
+}
+</style>
+<body>
+
+    <!-- ======================= Header ======================= -->
+    <header class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Logo.png" class="logo"> Pure Ayurveda
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="file:///D:/hamza/bootstrap/project6/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/blog.html#">Blog</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pages
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="file:///D:/hamza/bootstrap/project6/checkout.html">Checkout</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/contact.html">Contact</a></li>
+                </ul>
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/wreist.html"><i class="fas fa-heart"></i></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="file:///D:/hamza/bootstrap/project6/addcart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger rounded-pill cart-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="file:///D:/hamza/bootstrap/project6/protfolio.html#"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================= Hero Section ======================= -->
+        <section class="hero-section">
+             <img src="ban-leafleft.png" class="hero-leaf-1 decorative-leaf">
+             <img src="Capture-removebg-preview.png" class="hero-leaf-2 decorative-leaf">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-text">
+                        <h1>We Are Here To Give You The Best <span>Herb Products</span></h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                        <a href="file:///D:/hamza/bootstrap/project6/shop.html" class="btn btn-primary-custom">Shop Now</a>
+                    </div>
+                    <div class="col-lg-6 hero-image-container">
+                        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="ban-head-Image.png" class="d-block w-100" >
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="ban-head-Image.png" class="d-block w-100" >
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Health Categories Section ======================= -->
+        <section class="categories-section text-center">
+            <div class="container">
+                 <div class="category-carousel">
+                    <div class="category-item">
+                        <img src="blog-1 - Copy.png">
+                        <p>Eye Care</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="blog-2 - Copy.png">
+                        <p>Hair Care</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="blog-3.png">
+                        <p>Skin Care</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="blog-4 - Copy.png">
+                        <p>Men's Health</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="blog-5 - Copy.png">
+                        <p>Women's Health</p>
+                    </div>
+                     <div class="category-item">
+                        <img src="care-img1.png">
+                        <p>Memory Health</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="care-img2.png">
+                        <p>Beauty</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="care-img3.png">
+                        <p>Brain Health</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======================= Our Top Products Section ======================= -->
+        <section class="product-section text-center">
+            <div class="container">
+                <p class="section-subtitle">Medicine</p>
+                <h2 class="section-title">Our Top Products</h2>
+                <div class="row">
+                    <!-- Product Card 1 -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <span class="badge bg-sale">Sale</span>
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="product-img1.png" class="product-image">
+                            <div class="product-info">
+                                <h5>Black Organic Tea</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <span class="badge bg-discount">30% Off</span>
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="product-img2.png" class="product-image">
+                            <div class="product-info">
+                                <h5>Loose Leaf Tea</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                     <p class="product-price"><span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Product Card 3 -->
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="product-img3.png" class="product-image">
+                            <div class="product-info">
+                                <h5>Oolong Tea</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                     <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Product Card 4 -->
+                     <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                             <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="product-img4.png" class="product-image">
+                            <div class="product-info">
+                                <h5>Black Organic Tea</h5>
+                                 <div class="d-flex justify-content-between align-items-center">
+                                     <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <a href="file:///D:/hamza/bootstrap/project6/shop.html#" class="btn btn-primary-custom mt-4">View More</a>
+            </div>
+        </section>
+
+        <!-- ======================= Who We Are Section ======================= -->
+        <section class="who-we-are-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="experience-image-container">
+                             <img src="about-img.png" class="img-fluid rounded-4">
+                             <div class="experience-badge">
+                                <h2>10</h2>
+                                <p>Years of Experience</p>
+                             </div>
+                             <img src="" class="experience-thumb">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ps-lg-5">
+                        <p class="section-subtitle">Who We Are</p>
+                        <h2 class="section-title">The Natural Way To Achieving Balance And Optimal Health</h2>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="file:///D:/hamza/bootstrap/project6/about.html" class="btn btn-primary-custom">Know More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Achievements Section ======================= -->
+        <section class="achievements-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
+                         <p class="section-subtitle">Our Recent Achievements</p>
+                         <h2 class="section-title">Benefit From Choosing The Best</h2>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="achievement-card">
+                                    <div class="icon-box"><i class="fas fa-trophy"></i></div>
+                                    <div class="text-box">
+                                        <h3>25+</h3>
+                                        <p>Years Experience</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-6 mb-4">
+                                <div class="achievement-card">
+                                    <div class="icon-box"><i class="fas fa-star"></i></div>
+                                    <div class="text-box">
+                                        <h3>60+</h3>
+                                        <p>Happy Customers</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-6 mb-4">
+                                <div class="achievement-card">
+                                    <div class="icon-box"><i class="fas fa-vial"></i></div>
+                                    <div class="text-box">
+                                        <h3>800+</h3>
+                                        <p>Our Products</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-6 mb-4">
+                                <div class="achievement-card">
+                                    <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="text-box">
+                                        <h3>100%</h3>
+                                        <p>Product Purity</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Trending Products Section ======================= -->
+        <section class="product-section text-center">
+            <div class="container">
+                <p class="section-subtitle">Product</p>
+                <h2 class="section-title">Trending Product</h2>
+                <div class="row">
+                    <!-- Product Card 1 -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro1.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro2.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro3.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="product-card">
+                            <a href="#" class="wishlist-icon"><i class="far fa-heart"></i></a>
+                            <img src="tren-pro4.png" class="product-image-large">
+                             <div class="product-info">
+                                <h5>Herbal Oil Medicine</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="product-price"><del>$100</del> <span>$50</span></p>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i> 4.5/5
+                                    </div>
+                                </div>
+                                <a href="file:///D:/hamza/bootstrap/project6/addcart.html" class="btn btn-outline-custom w-100"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Why Pure Ayurveda ======================= -->
+        <section class="why-ayurveda-section">
+            <div class="container">
+                <div class="text-center">
+                    <p class="section-subtitle">Best For You</p>
+                    <h2 class="section-title">Why Pure Ayurveda</h2>
+                </div>
+                 <div class="row justify-content-center g-4 mb-5">
+                    <div class="col-md-5 col-lg-3">
+                       <div class="why-card">
+                           <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                           <h5>100% Organic</h5>
+                           <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                       </div>
+                    </div>
+                     <div class="col-md-5 col-lg-3">
+                       <div class="why-card">
+                           <div class="icon-box"><i class="fas fa-medal"></i></div>
+                           <h5>Best Quality</h5>
+                           <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                       </div>
+                    </div>
+                     <div class="col-md-5 col-lg-3">
+                       <div class="why-card">
+                           <div class="icon-box"><i class="fas fa-hands-wash"></i></div>
+                           <h5>Hygienic Product</h5>
+                           <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                       </div>
+                    </div>
+                     <div class="col-md-5 col-lg-3">
+                       <div class="why-card">
+                           <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+                           <h5>Health Care</h5>
+                           <p>Duis aute irure dolor in reprehenderit in voluptate velit</p>
+                       </div>
+                    </div>
+                 </div>
+
+                 <div class="row align-items-center g-5 pt-5">
+                    <div class="col-lg-6">
+                        <h2 class="section-title">Solve Your Problem with The Power of Nature</h2>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        <ul class="list-unstyled why-list">
+                            <li><i class="fas fa-check-circle"></i> Quis nostrud was exercitation.</li>
+                             <li><i class="fas fa-check-circle"></i> Quis nostrud was exercitation.</li>
+                            <li><i class="fas fa-check-circle"></i> Quis nostrud was exercitation.</li>
+                             <li><i class="fas fa-check-circle"></i> Quis nostrud was exercitation.</li>
+                        </ul>
+                         <p class="text-muted">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <a href="#" class="btn btn-primary-custom">Read More</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            
+                            <img src="blog-2 - Copy.png" alt="Massage therapy">
+                            
+                            <a href="https://youtu.be/hJTmi9euoNg?si=wBgeuA-lTeVbegKt" class="play-btn"><i class="fas fa-play"></i></a>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- ======================= Testimonials Section ======================= -->
+        <section class="testimonial-section">
+            <div class="container">
+                <p class="section-subtitle text-center">Our Testimonial</p>
+                <h2 class="section-title text-center">What Our Client's Say</h2>
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="testimonial-card">
+                               <i class="fas fa-quote-right quote-icon"></i>
+                               <p>Amet minim mollit non deserunt ullamco est sit aliqua ea dolor do amet. officia consequat duis enim velit mollit. Exercitation it's veam consequat sunt nostrud amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id es.</p>
+                               <div class="client-info">
+                                   <img src="test-img1.png">
+                                   <h6>Leslie Alexander</h6>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="testimonial-card">
+                               <i class="fas fa-quote-right quote-icon"></i>
+                               <p>Exercitation it's veam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua ea dolor do amet. officia consequat duis enim velit mollit. Excepteur sint occaecat cupidatat non proident.</p>
+                               <div class="client-info">
+                                   <img src="test-img2.png">
+                                   <h6>John Doe</h6>
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Team Section ======================= -->
+        <section class="team-section text-center">
+            <div class="container">
+                <p class="section-subtitle">Our Team</p>
+                <h2 class="section-title">Trusted & Certificated Team</h2>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-card">
+                            <img src="team-1.png">
+                            <div class="team-info">
+                                <h5>Esther Howard</h5>
+                                <p>Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="team-card">
+                            <img src="team-2.png">
+                            <div class="team-info">
+                                <h5>Darlene Robertson</h5>
+                                <p>Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="team-card">
+                            <img src="team-3.png">
+                            <div class="team-info">
+                                <h5>Robert Fox</h5>
+                                <p>Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="team-card">
+                            <img src="team-4.png">
+                            <div class="team-info">
+                                <h5>Jenny Wilson</h5>
+                                <p>Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Blog Section ======================= -->
+        <section class="blog-section">
+            <div class="container">
+                 <p class="section-subtitle text-center">Blog</p>
+                 <h2 class="section-title text-center">Our Latest News</h2>
+                 <div class="row g-4">
+                     <div class="col-lg-4 col-md-6">
+                         <div class="blog-card">
+                             <img src="blog-1 - Copy.png">
+                             <div class="blog-content">
+                                 <div class="blog-meta">
+                                     <span>Ayurveda Medicine</span>
+                                     <span>June 17, 2024</span>
+                                 </div>
+                                 <h5>Duis aute irure dolor in velit voluptate esse</h5>
+                                 <p>It is a long established was a fact that a reader will be distracted by the readable content.</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="col-lg-4 col-md-6">
+                         <div class="blog-card">
+                             <img src="blog-2 - Copy.png">
+                             <div class="blog-content">
+                                 <div class="blog-meta">
+                                     <span>Ayurveda Medicine</span>
+                                     <span>June 15, 2024</span>
+                                 </div>
+                                 <h5>Duis aute irure dolor in velit voluptate esse</h5>
+                                 <p>It is a long established was a fact that a reader will be distracted by the readable content.</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="col-lg-4 col-md-6">
+                         <div class="blog-card">
+                             <img src="blog-3.png">
+                             <div class="blog-content">
+                                 <div class="blog-meta">
+                                     <span>Ayurveda Medicine</span>
+                                     <span>June 10, 2024</span>
+                                 </div>
+                                 <h5>Duis aute irure dolor in velit voluptate esse</h5>
+                                 <p>It is a long established was a fact that a reader will be distracted by the readable content.</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- ======================= Footer ======================= -->
+    <footer class="footer-section">
+        <div class="subscribe-bar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3>Sign Up To Get Updates & News About Us..</h3>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="subscribe-form">
+                            <input type="email" class="form-control" placeholder="Enter Your Email...">
+                            <button type="submit" class="btn btn-primary-custom">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer">
+            <div class="container">
+                 <img src="footer-left - Copy.png" class="footer-herbs-left">
+                 <img src="footer-right - Copy.png" class="footer-herbs-right">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <a class="navbar-brand text-white" href="#">
+                           <img src="Logo.png" class="logo"> Pure Ayurveda
+                        </a>
+                        <p class="mt-3">Amet minim mollit non deserunt ullamco est sit Velit officia consequat duis enim velit occaecat.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Useful Links</h5>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">Shipping Options</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">Shopping FAQs</a></li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Contact Info</h5>
+                        <ul class="list-unstyled footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i> 4517 Washington Ave. Manchester, Kentucky 39495</li>
+                            <li><i class="fas fa-phone-alt"></i> (208) 555-0112</li>
+                            <li><i class="fas fa-envelope"></i> example@gmail.com</li>
+                        </ul>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <h5>Recent Blog</h5>
+                        <ul class="list-unstyled recent-blog-list">
+                            <li>
+                                <img src="footer-blog1 - Copy - Copy.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                             <li>
+                                <img src="footer-blog2.png">
+                                <div>
+                                    <span>Jun 10, 2024</span>
+                                    <p>Amet minim mollit non deserunt est sit Velit.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar text-center">
+             Copyright © 2024. All Right Reserved. Pure Ayurveda
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js">
+        document.addEventListener('DOMContentLoaded', function() {
+
+    // Add 'scrolled' class to navbar on scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Initialize Bootstrap Carousels if they exist
+    const heroCarouselEl = document.querySelector('#heroCarousel');
+    if (heroCarouselEl) {
+        new bootstrap.Carousel(heroCarouselEl, {
+            interval: 5000,
+            ride: 'carousel'
+        });
+    }
+
+    const testimonialCarouselEl = document.querySelector('#testimonialCarousel');
+    if (testimonialCarouselEl) {
+        new bootstrap.Carousel(testimonialCarouselEl, {
+            interval: 6000,
+            ride: 'carousel'
+        });
+    }
+    
+    // Note: The categories "carousel" is implemented with flexbox wrap for simplicity and
+    // good UX on all devices. For a true multi-item slider, a library like Swiper.js
+    // or custom JavaScript would be needed, but this achieves a similar visual goal.
+
+});
+    </script>
+
+</body>
+</html>
